@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5210640879827844763}
   - component: {fileID: 3390916076650415019}
   - component: {fileID: 342847865744723188}
+  - component: {fileID: 8351858462903712592}
   m_Layer: 0
   m_Name: cubeB
   m_TagString: Untagged
@@ -103,6 +104,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8351858462903712592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984183244389611574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daa4900cb2d33f42a999fc38356268e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab2: {fileID: 7574727761836782910, guid: 129e010f4b67bc140ba483b2e12612a8, type: 3}
+  prefab4: {fileID: 4150934957950651157, guid: 50b22a4456dac2946a30a315f4c50451, type: 3}
+  prefab8: {fileID: 2417424092442684837, guid: 4692cc83ad91f844387b6ae7209bc24b, type: 3}
+  prefab16: {fileID: 0}
+  prefab32: {fileID: 0}
+  prefab64: {fileID: 0}
+  prefab128: {fileID: 0}
+  prefab256: {fileID: 0}
+  prefab512: {fileID: 0}
+  prefab1024: {fileID: 0}
+  prefab2048: {fileID: 0}
 --- !u!1001 &327144978931550011
 PrefabInstance:
   m_ObjectHideFlags: 0

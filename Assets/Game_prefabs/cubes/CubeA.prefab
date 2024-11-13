@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6209717839806129908}
   - component: {fileID: 4038845535194135052}
   - component: {fileID: 3436633104706447325}
+  - component: {fileID: 3335344614878123403}
   m_Layer: 0
   m_Name: CubeA
   m_TagString: Untagged
@@ -121,6 +122,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3335344614878123403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710501863415768983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daa4900cb2d33f42a999fc38356268e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab2: {fileID: 8710501863415768983}
+  prefab4: {fileID: 984183244389611574, guid: 413e98cdcef1acd4383bc4be04b255f5, type: 3}
+  prefab8: {fileID: 7574727761836782910, guid: 129e010f4b67bc140ba483b2e12612a8, type: 3}
+  prefab16: {fileID: 4150934957950651157, guid: 50b22a4456dac2946a30a315f4c50451, type: 3}
+  prefab32: {fileID: 2417424092442684837, guid: 4692cc83ad91f844387b6ae7209bc24b, type: 3}
+  prefab64: {fileID: 5904346227065999748, guid: 8b153b5c797c0ed4daca82a78d614009, type: 3}
+  prefab128: {fileID: 7401469743721171023, guid: 0d453f1b794f1ce4c8659f6c0e23dc7a, type: 3}
+  prefab256: {fileID: 3394090506525626398, guid: 689339fc1cb2d3d4c91f723e5538769c, type: 3}
+  prefab512: {fileID: 6292360330465139770, guid: 6b7a953e3c77ac74d813794b4dc85419, type: 3}
+  prefab1024: {fileID: 9208547307128946854, guid: 5c64fadb19c11084b8c23d3fc625abb0, type: 3}
+  prefab2048: {fileID: 4652428911293101839, guid: 30bbe26c2637dc14a9e42810fa3c0d30, type: 3}
 --- !u!1001 &1453926701249834530
 PrefabInstance:
   m_ObjectHideFlags: 0
