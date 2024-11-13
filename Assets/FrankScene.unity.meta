@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/FrankScene.unity.meta
 guid: af267b3362edd024f81777b13656dcaa
+========
+guid: 25578b6797e2e45dd96589e9fc43c077
+folderAsset: yes
+>>>>>>>> origin/allek:Assets/Course Library.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
