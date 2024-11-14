@@ -343,8 +343,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1390782429}
   pauseButton: {fileID: 256421078}
-  controlls: {fileID: 0}
-  mainmenu: {fileID: 0}
+  controlls: {fileID: 92829565}
+  mainmenu: {fileID: 602673120}
+  gameOverPanel: {fileID: 1803387604}
+  gameOver: 0
 --- !u!1 &92829565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1029,8 @@ MonoBehaviour:
   pauseButton: {fileID: 256421078}
   controlls: {fileID: 92829565}
   mainmenu: {fileID: 602673120}
+  gameOverPanel: {fileID: 1803387604}
+  gameOver: 0
 --- !u!1 &314076103
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,6 +4280,10 @@ PrefabInstance:
       propertyPath: clip
       value: 
       objectReference: {fileID: 8300000, guid: 28ea8f2e445024d93884e4bc4ba1e834, type: 3}
+    - target: {fileID: 7605299249987503494, guid: eb3f2c6354fe34c439e52cb8c89f0f4e, type: 3}
+      propertyPath: canvasObj
+      value: 
+      objectReference: {fileID: 61072534}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
