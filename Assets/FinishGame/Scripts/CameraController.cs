@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    public Button rotateButton;
-    public Button rotateButton2; 
+    public Button rotateButton; 
     public Vector3 targetRotation;
     public float rotationSpeed = 1f; 
 
@@ -16,7 +15,6 @@ public class CameraController : MonoBehaviour
     public void Start()
     {
         rotateButton.onClick.AddListener(StartRotation);
-        rotateButton2.onClick.AddListener(StartRotation); 
         targetQuaternion = Quaternion.Euler(targetRotation);
         Time.timeScale = 1f;
     }
