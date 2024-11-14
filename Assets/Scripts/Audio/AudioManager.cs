@@ -1,77 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+
     public static AudioManager Instance;
-
-    public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
-
+    [SerializeField] AudioSource musicSource, effectsSource;
+    public AudioMixer master;
     private void Awake()
     {
-        if(Instance == null)
+
+        if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Start()
-    {
-        PlayMusic("Theme");
-    }
-
-    public void PlayMusic(string name)
-    {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
-
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
-        } else
-        {
-            musicSource.clip = s.clip;
-            musicSource.Play();
-        }
-    }
-
-    public void PlaySFX(string name)
-    {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
-
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
+            DontDestroyOnLoad(this);
         }
         else
         {
-            sfxSource.PlayOneShot(s.clip);
+            Destroy(this.gameObject);
         }
     }
-
-    public void ToggleMusic()
+    public void PlaySFX(AudioClip clip)
     {
-        musicSource.mute = !musicSource.mute;
+        effectsSource.PlayOneShot(clip);
     }
-    public void ToggleSFX()
+    public void PlayMusic(AudioClip music, bool loop)
     {
-        sfxSource.mute = !sfxSource.mute;
-    }
-
-    public void MusicVolume(float volume)
-    {
-        musicSource.volume = volume;
+        musicSource.Stop();
+        musicSource.clip = music;
+        musicSource.Play();
+        musicSource.loop = loop;
     }
 
-    public void SFXVolume(float volume)
+    public void MuteMusic()
     {
-        sfxSource.volume = volume;
+        musicSource.volume = 0;
+        effectsSource.volume = 0;
     }
 
+    public void VolumeMusic()
+    {
+        musicSource.volume = 1;
+        effectsSource.volume = 1;
+    }
 }
