@@ -6,30 +6,33 @@ using UnityEngine.UI;
 public class CameraController : MonoBehaviour
 {
     public Button rotateButton;
+    public Button rotateButton2; 
     public Vector3 targetRotation;
-    public float rotationSpeed = 1f; // Velocidad de rotación
+    public float rotationSpeed = 1f; 
 
     private Quaternion targetQuaternion;
     private bool isRotating = false;
 
-    void Start()
+    public void Start()
     {
         rotateButton.onClick.AddListener(StartRotation);
+        rotateButton2.onClick.AddListener(StartRotation); 
         targetQuaternion = Quaternion.Euler(targetRotation);
+        Time.timeScale = 1f;
     }
 
     void Update()
     {
         if (isRotating)
         {
-            // Lerp para una rotación suave hacia la rotación objetivo
+            
             transform.rotation = Quaternion.Lerp(transform.rotation, targetQuaternion, rotationSpeed * Time.deltaTime);
 
-            // Verifica si la cámara ha llegado a la rotación deseada
+            
             if (Quaternion.Angle(transform.rotation, targetQuaternion) < 0.1f)
             {
-                transform.rotation = targetQuaternion; // Asegura la rotación exacta
-                isRotating = false; // Detiene la rotación
+                transform.rotation = targetQuaternion; 
+                isRotating = false; 
             }
         }
     }
