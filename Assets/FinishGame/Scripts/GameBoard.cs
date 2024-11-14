@@ -133,9 +133,11 @@ public class GameBoard : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(clip);
             PlaceRandomHouse();
-        } else {
+        } else if(GetEmptyPositions().Count<=0 && !CanMove()) {
             canvasObj.GetComponent<PauseMenu>().GameOverPanel();
         }
+        Debug.Log(GetEmptyPositions().Count);
+        Debug.Log(CanMove());
     }
 
     // Mover una casa en la direcci�n especificada
@@ -169,5 +171,17 @@ public class GameBoard : MonoBehaviour
         }
 
         return false;  // No se realiz� ning�n movimiento
+    }
+
+    private bool CanMove(){
+        for (int i=0; i<boardSize;i++){
+            for (int j=0; i<boardSize;i++){
+                if(i>0 && (board[i,j]?.GetValue() == board[i-1,j]?.GetValue())) return true; 
+                if(j>0 && (board[i,j]?.GetValue() == board[i,j-1]?.GetValue())) return true; 
+                if(i<boardSize-1 && (board[i,j]?.GetValue() == board[i+1,j]?.GetValue())) return true; 
+                if(j<boardSize-1 && (board[i,j]?.GetValue() == board[i,j+1]?.GetValue())) return true; 
+            }
+        }
+        return false;
     }
 }
