@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class GameBoard : MonoBehaviour
 {
     public GameObject housePrefab;  // Prefab de la casa
+    public GameObject canvasObj;  // Prefab de la casa
     public int boardSize = 4;       // Tama�o del tablero (ej. 4x4)
     public float cellSize = 2f;     // Espacio entre celdas
 
@@ -132,6 +133,8 @@ public class GameBoard : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(clip);
             PlaceRandomHouse();
+        } else {
+            canvasObj.GetComponent<PauseMenu>().GameOverPanel();
         }
     }
 

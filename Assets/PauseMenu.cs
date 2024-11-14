@@ -5,11 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    // public static PauseMenu Instance;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject controlls;
     [SerializeField] private GameObject mainmenu;
+    [SerializeField] private GameObject gameOverPanel;
+    public bool gameOver;
 
+    // private void Awake()
+    // {
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //     }
+    //     else
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+        gameOver = false;
+        mainmenu.SetActive(true);
+    }
     public void Pause ()
     {
         Time.timeScale = 0f;
@@ -41,6 +62,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
+    public void GameOverPanel()
+    {
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
+        gameOver = true;
+    }
 
 }
