@@ -7,7 +7,6 @@ public class House : MonoBehaviour
     private int value;
     public List<Transform> children;
     // Establecer el valor de la casa
-
     
     public void SetValue(int newValue)
     {

@@ -46,10 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a273df22fb73176449e0a8835a5283d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
-  sfxSounds: []
   musicSource: {fileID: 179606051041072967}
-  sfxSource: {fileID: 4625889080913527503}
+  effectsSource: {fileID: 4625889080913527503}
+  master: {fileID: 0}
 --- !u!1 &6626432843991719507
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameBoard : MonoBehaviour
 {
     public GameObject housePrefab;  // Prefab de la casa
-    public int boardSize = 4;       // Tamaño del tablero (ej. 4x4)
+    public int boardSize = 4;       // Tamaï¿½o del tablero (ej. 4x4)
     public float cellSize = 2f;     // Espacio entre celdas
 
     private House[,] board;         // Array bidimensional para almacenar las casas
+
+    public AudioClip clip;           //CLip de sonido cuando se mueven las fichas
 
     private void Start()
     {
@@ -50,7 +53,7 @@ public class GameBoard : MonoBehaviour
         PlaceRandomHouse();
     }
 
-    // Colocar una casa en una posición aleatoria en el tablero
+    // Colocar una casa en una posiciï¿½n aleatoria en el tablero
     private void PlaceRandomHouse()
     {
         List<Vector2Int> emptyPositions = GetEmptyPositions();
@@ -61,7 +64,7 @@ public class GameBoard : MonoBehaviour
         }
     }
 
-    // Obtener las posiciones vacías en el tablero
+    // Obtener las posiciones vacï¿½as en el tablero
     private List<Vector2Int> GetEmptyPositions()
     {
         List<Vector2Int> emptyPositions = new List<Vector2Int>();
@@ -78,7 +81,7 @@ public class GameBoard : MonoBehaviour
         return emptyPositions;
     }
 
-    // Instanciar una casa en una posición específica y almacenar en el array board
+    // Instanciar una casa en una posiciï¿½n especï¿½fica y almacenar en el array board
     private void InstantiateHouse(int x, int y, int value)
     {
         Vector3 position = new Vector3(x * cellSize, 0, y * cellSize);
@@ -92,10 +95,10 @@ public class GameBoard : MonoBehaviour
         board[x, y] = house;
     }
 
-    // Obtener la casa en una posición específica del tablero
+    // Obtener la casa en una posiciï¿½n especï¿½fica del tablero
     private House GetHouseAtPosition(int x, int y)
     {
-        // Verificar que la posición está dentro de los límites del tablero
+        // Verificar que la posiciï¿½n estï¿½ dentro de los lï¿½mites del tablero
         if (x >= 0 && x < boardSize && y >= 0 && y < boardSize)
         {
             return board[x, y];
@@ -103,7 +106,7 @@ public class GameBoard : MonoBehaviour
         return null;
     }
 
-    // Mover todas las casas en una dirección específica
+    // Mover todas las casas en una direcciï¿½n especï¿½fica
     private void MoveHouses(Vector2Int direction)
     {
         bool moved = false;
@@ -124,43 +127,44 @@ public class GameBoard : MonoBehaviour
             }
         }
 
-        // Si se realizó algún movimiento, colocar una nueva casa
+        // Si se realizï¿½ algï¿½n movimiento, colocar una nueva casa
         if (moved)
         {
+            AudioManager.Instance.PlaySFX(clip);
             PlaceRandomHouse();
         }
     }
 
-    // Mover una casa en la dirección especificada
+    // Mover una casa en la direcciï¿½n especificada
     private bool MoveHouse(House house, Vector2Int direction)
     {
-        // Obtener la posición actual en el array `board`
+        // Obtener la posiciï¿½n actual en el array `board`
         int currentX = Mathf.RoundToInt(house.transform.position.x / cellSize);
         int currentY = Mathf.RoundToInt(house.transform.position.z / cellSize);
         Vector2Int targetPos = new Vector2Int(currentX + direction.x, currentY + direction.y);
 
-        // Verificar si la posición destino está dentro del tablero
+        // Verificar si la posiciï¿½n destino estï¿½ dentro del tablero
         if (targetPos.x >= 0 && targetPos.x < boardSize && targetPos.y >= 0 && targetPos.y < boardSize)
         {
             House targetHouse = GetHouseAtPosition(targetPos.x, targetPos.y);
             if (targetHouse == null)
             {
-                // Si la posición destino está vacía, mover la casa
-                board[currentX, currentY] = null;  // Vaciar la posición actual
-                board[targetPos.x, targetPos.y] = house;   // Mover la casa a la nueva posición
+                // Si la posiciï¿½n destino estï¿½ vacï¿½a, mover la casa
+                board[currentX, currentY] = null;  // Vaciar la posiciï¿½n actual
+                board[targetPos.x, targetPos.y] = house;   // Mover la casa a la nueva posiciï¿½n
                 house.transform.position = new Vector3(targetPos.x * cellSize, 0, targetPos.y * cellSize);
-                return true;  // Indica que se realizó un movimiento
+                return true;  // Indica que se realizï¿½ un movimiento
             }
             else if (targetHouse.GetValue() == house.GetValue())
             {
-                // Si la posición destino tiene una casa del mismo valor, combinar casas
+                // Si la posiciï¿½n destino tiene una casa del mismo valor, combinar casas
                 targetHouse.SetValue(targetHouse.GetValue() * 2);  // Duplicar el valor de la casa destino
                 Destroy(house.gameObject);                         // Destruir la casa actual
-                board[currentX, currentY] = null;                  // Vaciar la posición original
-                return true;  // Indica que se realizó un movimiento
+                board[currentX, currentY] = null;                  // Vaciar la posiciï¿½n original
+                return true;  // Indica que se realizï¿½ un movimiento
             }
         }
 
-        return false;  // No se realizó ningún movimiento
+        return false;  // No se realizï¿½ ningï¿½n movimiento
     }
 }
